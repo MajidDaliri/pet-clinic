@@ -122,4 +122,31 @@ class OwnerTest {
 		assertEquals(owner.getPets().get(0), dog);
 		assertEquals(owner.getPets().get(1), cat);
 	}
+
+	@Test
+	public void setAddressTest() {
+		final String ADDRESS = "IRAN";
+
+		owner.setAddress(ADDRESS);
+
+		assertEquals(owner.getAddress(), ADDRESS);
+	}
+
+	@Test
+	public void setCityTest() {
+		final String CITY = "Tehran";
+
+		owner.setCity(CITY);
+
+		assertEquals(owner.getCity(), CITY);
+	}
+
+	@Test
+	public void setTelephoneTest() {
+		final String TELEPHONE = "12345";
+
+		owner.setTelephone(TELEPHONE);
+
+		assertEquals(owner.getTelephone(), TELEPHONE);
+	}
 }
