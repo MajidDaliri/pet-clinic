@@ -83,6 +83,14 @@ class OwnerTest {
 	}
 
 	@Test
+	public void getPetByNameForNotNewPets() {
+		owner.addPet(dog);
+		dog.setId(1);
+
+		assertEquals(owner.getPet(DOG_NAME), dog);
+	}
+
+	@Test
 	public void getPetShouldReturnNullIfPetNotAdded() {
 		owner.addPet(cat);
 
@@ -94,6 +102,14 @@ class OwnerTest {
 		owner.addPet(dog);
 
 		assertNull(owner.getPet(DOG_NAME, true));
+	}
+
+	@Test
+	public void getPetWithIgnoreNewShouldNotIgnorePetsWithId() {
+		owner.addPet(dog);
+		dog.setId(1);
+
+		assertNotNull(owner.getPet(DOG_NAME, true));
 	}
 
 	@Test

@@ -16,12 +16,16 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
+/**
+ * Theory class for {@link Pet}
+ */
 @RunWith(Theories.class)
 public class PetTest {
 	private Pet pet;
 
-	@DataPoints("visits")
+	@DataPoints
 	public static List<List<Visit>> visitLists = new ArrayList<>();
 
 	@BeforeClass
@@ -55,6 +59,8 @@ public class PetTest {
 
 	@Theory
 	public void getVisitsShouldReturnSorted(List<Visit> visitList) {
+		assumeFalse(visitList.isEmpty());
+
 		visitList.forEach(pet::addVisit);
 		PropertyComparator.sort(visitList, new MutableSortDefinition("date", false, false));
 		assertEquals(pet.getVisits(), visitList);
