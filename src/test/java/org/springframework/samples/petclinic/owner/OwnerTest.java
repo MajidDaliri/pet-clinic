@@ -95,4 +95,15 @@ class OwnerTest {
 
 		assertNull(owner.getPet(DOG_NAME, true));
 	}
+
+	@Test
+	public void getPetsShouldReturnSorted() {
+		cat.setName("B");
+		owner.addPet(cat);
+		dog.setName("A");
+		owner.addPet(dog);
+
+		assertEquals(owner.getPets().get(0), dog);
+		assertEquals(owner.getPets().get(1), cat);
+	}
 }
