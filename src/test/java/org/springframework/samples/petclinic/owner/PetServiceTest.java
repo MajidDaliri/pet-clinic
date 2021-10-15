@@ -11,8 +11,9 @@ import org.springframework.samples.petclinic.utility.PetTimedCache;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assume.assumeTrue;
 
 @RunWith(Parameterized.class)
 public class PetServiceTest {
@@ -32,7 +33,7 @@ public class PetServiceTest {
 
 	@Parameters
 	public static Collection petIds() {
-		return Arrays.asList(1, 4, 6, 7, 9);
+		return Arrays.asList(1, 24, 6, 7, 9);
 	}
 
 	@Test

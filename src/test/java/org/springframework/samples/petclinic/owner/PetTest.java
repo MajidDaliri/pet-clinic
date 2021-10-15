@@ -15,8 +15,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assumptions.assumeFalse;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assume.assumeFalse;
 
 /**
  * Theory class for {@link Pet}
@@ -43,6 +43,7 @@ public class PetTest {
 
 		visitLists.add(Collections.singletonList(nextYearVisit));
 		visitLists.add(Arrays.asList(todayVisit, lastMonthVisit, yesterdayVisit));
+		visitLists.add(Collections.emptyList());
 		visitLists.add(Arrays.asList(tomorrowVisit, lastMonthVisit, nextYearVisit, todayVisit));
 	}
 

@@ -3,7 +3,6 @@ package org.springframework.samples.petclinic.owner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Test class for {@link Owner}
  *
- * Properties (getters/setters in Java) are good examples of code that usually doesn’t contain any logic,
- * and doesn’t require testing. But watch out: once you add any check inside the property,
+ * Properties (getters/setters in Java) are good examples of code that usually doesn't contain any logic,
+ * and doesn't require testing. But watch out: once you add any check inside the property,
  * you’ll want to make sure that logic is being tested.
  */
 class OwnerTest {
@@ -59,14 +58,15 @@ class OwnerTest {
 		owner.addPet(cat);
 
 		assertEquals(owner.getPets().size(), 2);
-		assertEquals(owner.getPets(), Arrays.asList(dog, cat));
+		assertTrue(owner.getPets().contains(dog));
+		assertTrue(owner.getPets().contains(cat));
 	}
 
 	@Test
 	public void removePetTest() {
 		owner.addPet(dog);
 		owner.addPet(cat);
-		assertEquals(owner.getPets(), Arrays.asList(dog, cat));
+		assertEquals(owner.getPets().size(), 2);
 
 		owner.removePet(dog);
 		assertEquals(owner.getPets(), Collections.singletonList(cat));
@@ -83,7 +83,7 @@ class OwnerTest {
 	}
 
 	@Test
-	public void getPetByNameForNotNewPets() {
+	public void getPetByNameShouldNotCareAboutPetId() {
 		owner.addPet(dog);
 		dog.setId(1);
 
