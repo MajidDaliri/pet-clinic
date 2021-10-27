@@ -21,4 +21,15 @@ public class DummyPetStore {
 		++id;
 		return newPet;
 	}
+	
+	public static Pet getNewPet() {
+		Pet newPet = new Pet();
+		newPet.setName(NAME_PREFIX + id);
+		PetType type = new PetType();
+		type.setName(TYPE_PREFIX + id);
+		newPet.setType(type);
+		newPet.setBirthDate(LocalDate.now());
+		++id;
+		return newPet;
+	}
 }
