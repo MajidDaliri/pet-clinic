@@ -24,7 +24,7 @@ public class SimplePriceCalculatorTest {
 	private static final double BASE_PRICE_PER_PET = 10000;
 	private static final double DELTA = 0.001;
 	private static final UserType NEW_USER = UserType.NEW;
-	private static final UserType EXISTING_USER = UserType.SILVER;
+	private static final UserType PREMIUM_USER = UserType.SILVER;
 	private static final double BASE_RARE_COEF = 1.2;
 
 	private static final SimplePriceCalculator simplePriceCalculator = new SimplePriceCalculator();
@@ -49,31 +49,30 @@ public class SimplePriceCalculatorTest {
 
 	@Test
 	public void calcPriceShouldReturnBaseChargeIfThereAreNoPets() {
-		double price = simplePriceCalculator.calcPrice(Collections.emptyList(), BASE_CHARGE, BASE_PRICE_PER_PET, EXISTING_USER);
-		double expectedPrice = BASE_CHARGE;
-		assertEquals(price, expectedPrice, DELTA);
+		double price = simplePriceCalculator.calcPrice(Collections.emptyList(), BASE_CHARGE, BASE_PRICE_PER_PET, PREMIUM_USER);
+		assertEquals(BASE_CHARGE, price, DELTA);
 	}
 
 	@Test
 	public void calcPriceShouldReturnDiscountedBaseChargeForNewUserTypeWhenPetsIsEmpty() {
 		double price = simplePriceCalculator.calcPrice(Collections.emptyList(), BASE_CHARGE, BASE_PRICE_PER_PET, NEW_USER);
 		double expectedPrice = BASE_CHARGE * NEW_USER.discountRate;
-		assertEquals(price, expectedPrice, DELTA);
+		assertEquals(expectedPrice, price, DELTA);
 	}
 
 	@Test
 	public void calcPriceShouldApplyRareCoefForRarePets() {
-		double price = simplePriceCalculator.calcPrice(rarePets, BASE_CHARGE, BASE_PRICE_PER_PET, EXISTING_USER);
+		double price = simplePriceCalculator.calcPrice(rarePets, BASE_CHARGE, BASE_PRICE_PER_PET, PREMIUM_USER);
 		double expectedPrice = BASE_CHARGE + rarePets.size() * BASE_PRICE_PER_PET * BASE_RARE_COEF;
-		assertEquals(price, expectedPrice, DELTA);
+		assertEquals(expectedPrice, price, DELTA);
 	}
 
 	@Test
 	public void calcPriceShouldNotApplyRareCoefForCommonPets() {
-		double price = simplePriceCalculator.calcPrice(commonPets, BASE_CHARGE, BASE_PRICE_PER_PET, EXISTING_USER);
+		double price = simplePriceCalculator.calcPrice(commonPets, BASE_CHARGE, BASE_PRICE_PER_PET, PREMIUM_USER);
 		double expectedPrice = BASE_CHARGE +
 			commonPets.size() * BASE_PRICE_PER_PET;
-		assertEquals(price, expectedPrice, DELTA);
+		assertEquals(expectedPrice, price, DELTA);
 	}
 
 	@Test
@@ -84,6 +83,6 @@ public class SimplePriceCalculatorTest {
 			commonPets.size() * BASE_PRICE_PER_PET +
 			rarePets.size() * BASE_PRICE_PER_PET * BASE_RARE_COEF;
 		double expectedPrice = noDiscountPrice * NEW_USER.discountRate;
-		assertEquals(price, expectedPrice, DELTA);
+		assertEquals(expectedPrice, price, DELTA);
 	}
 }
