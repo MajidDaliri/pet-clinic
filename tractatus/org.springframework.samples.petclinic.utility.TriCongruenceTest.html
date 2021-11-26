@@ -11,7 +11,11 @@
 
         <ul class="list-group">
             <li class="list-group-item list-group-item-primary"><b>Clause Definitions</b></li>
-            
+            <li class="list-group-item">a := t1A != t2A</li>
+            <li class="list-group-item">b := t1B != t2B</li>
+            <li class="list-group-item">c := t1C != t2C</li>
+            <li class="list-group-item">d := t1A &lt; 0</li>
+            <li class="list-group-item">e := t1A + t1B &lt; t1C</li>
         </ul>
 
         <table class="table">
@@ -24,10 +28,148 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td colspan="2"> No Report Generated </td>
-            </tr>
             
+            <tr>
+                <td>
+                    <span>UniqueTruePoint</span>
+                </td>
+                <td>
+                    <span>a + b + c</span>
+                </td>
+                <td>
+                    <ul>
+                        <li>DNF: a + b + c</li>
+                        <li>Implicant: a</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>a = true</li>
+                        <li>b = false</li>
+                        <li>c = false</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>UniqueTruePoint</span>
+                </td>
+                <td>
+                    <span>a + b + c</span>
+                </td>
+                <td>
+                    <ul>
+                        <li>DNF: a + b + c</li>
+                        <li>Implicant: b</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>a = false</li>
+                        <li>b = true</li>
+                        <li>c = false</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>UniqueTruePoint</span>
+                </td>
+                <td>
+                    <span>a + b + c</span>
+                </td>
+                <td>
+                    <ul>
+                        <li>DNF: a + b + c</li>
+                        <li>Implicant: c</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>a = false</li>
+                        <li>b = false</li>
+                        <li>c = true</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>ClauseCoverage</span>
+                </td>
+                <td>
+                    <span>d + e</span>
+                </td>
+                <td>
+                    <ul>
+                        
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>d = true</li>
+                        <li>e = true</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>CACC</span>
+                </td>
+                <td>
+                    <span>d + e</span>
+                </td>
+                <td>
+                    <ul>
+                        <li>Predicate Value: true</li>
+                        <li>Major Clause: e</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>d = false</li>
+                        <li>e = true</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>CACC</span>
+                </td>
+                <td>
+                    <span>d + e</span>
+                </td>
+                <td>
+                    <ul>
+                        <li>Predicate Value: true</li>
+                        <li>Major Clause: d</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>d = true</li>
+                        <li>e = false</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>ClauseCoverage</span>
+                </td>
+                <td>
+                    <span>d + e</span>
+                </td>
+                <td>
+                    <ul>
+                        
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>d = false</li>
+                        <li>e = false</li>
+                    </ul>
+                </td>
+            </tr>
             </tbody>
         </table>
     </body>
