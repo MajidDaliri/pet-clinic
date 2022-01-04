@@ -25,7 +25,7 @@ public class AddPet {
   @Test
   public void testAddPet() throws Exception {
     driver.get("http://localhost:8080/");
-    driver.findElement(By.linkText("Find owners")).click();
+    driver.findElement(By.xpath("//div[@id='main-navbar']/ul/li[2]/a/span[2]")).click();
     driver.findElement(By.id("lastName")).click();
     driver.findElement(By.id("lastName")).clear();
     driver.findElement(By.id("lastName")).sendKeys("Doodabi");
